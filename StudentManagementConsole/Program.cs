@@ -4,10 +4,10 @@ using System.Linq;
 
 namespace StudentManagementConsole
 {
-    // Base Class: Person  
+    //base Class:person  
     public abstract class Person
     {
-        // Encapsulation: Private field and Public property
+        //encapsulation:private field and public property
         private string _name;
 
         public string Name
@@ -23,22 +23,22 @@ namespace StudentManagementConsole
 
         public string Email { get; set; }
 
-        // Polymorphism: Abstract method  who override the child class 
+        //polymorphism:abstract method  who override the child class 
         public abstract void DisplayDetails();
     }
 
-    // derived Class: Student inherits from Person
+    // derived Class:student inherits from Person
     public class Student : Person
     {
         public string StudentId { get; set; }
 
-        // Polymorphism: Base class override
+        //polymorphism base class override
         public override void DisplayDetails()
         {
             Console.WriteLine($"[Student] ID: {StudentId} | Name: {Name} | Email: {Email}");
         }
     }
-    // interface design  for maintain standard
+    //interface design  for maintain standard
     public interface IStudentManager
     {
         void AddStudent(Student student);
@@ -48,7 +48,7 @@ namespace StudentManagementConsole
     //this Class implement the  interface  
     public class StudentManager : IStudentManager
     {
-        // encapsulation: list now private , no one can modify this 
+        //encapsulation:list now private , no one can modify this 
         private readonly List<Student> _students = new List<Student>();
 
         public void AddStudent(Student student)
@@ -68,7 +68,7 @@ namespace StudentManagementConsole
 
             foreach (var student in _students)
             {
-                student.DisplayDetails(); // Polymorphism in action
+                student.DisplayDetails();
             }
         }
 
@@ -101,10 +101,10 @@ namespace StudentManagementConsole
     {
         static void Main(string[] args)
         {
-            // made object using interface (Loosely coupled)
+            //made object using interface (Loosely coupled)
             IStudentManager studentManager = new StudentManager();
 
-            // Initial Dummy Data
+            //initial dmmy data
             studentManager.AddStudent(new Student { StudentId = "22-48508-3", Name = "Ifti", Email = "ifti@aiub.edu" });
 
             bool isRunning = true;
@@ -135,7 +135,7 @@ namespace StudentManagementConsole
                             Console.Write("Enter Student Email: ");
                             string email = Console.ReadLine();
 
-                            // Object creation
+                            //object creation
                             Student newStudent = new Student
                             {
                                 StudentId = id,
